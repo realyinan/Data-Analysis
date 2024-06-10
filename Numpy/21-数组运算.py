@@ -6,3 +6,4 @@ print(arr+1)
 print(arr/2)
 lis = [1, 2, 3]
 print(lis*3)
+print(arr**arr)

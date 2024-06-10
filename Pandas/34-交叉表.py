@@ -1,26 +1,48 @@
 import pandas as pd
-import numpy as np
-from matplotlib import pyplot as plt
 
-data = pd.read_csv('Pandas\data\stock_day.csv')
-date = pd.to_datetime(data.index)
-print(date)
-print('-------------------------------------------')
-data['week'] = date.weekday
-print(data['week'])
-print('-------------------------------------------')
-data['posi_neg'] = np.where(data['p_change'] > 0, 1, 0)
-print(data['posi_neg'])
-print('-------------------------------------------')
-count = pd.crosstab(data['week'], data['posi_neg'])
-print(count)
-print('-------------------------------------------')
-sum = count.sum(axis=1).astype(np.float32)
-print(sum)
-print('-------------------------------------------')
-pro = count.div(sum, axis=0)
-print(pro)
 
-# 画图展示
-pro.plot(kind='bar', stacked=True)
-plt.show()
+import pandas as pd
+
+# 创建示例数据
+data = {
+    '性别': ['男', '女', '男', '女', '男', '女'],
+    '喜欢的颜色': ['红', '蓝', '红', '红', '蓝', '蓝']
+}
+
+df = pd.DataFrame(data)
+
+# 计算交叉表
+交叉表 = pd.crosstab(df['性别'], df['喜欢的颜色'])
+
+# 输出结果
+print(交叉表)
+
+
+# 计算频率交叉表
+频率交叉表 = pd.crosstab(df['性别'], df['喜欢的颜色'], normalize=True)
+
+# 输出结果
+print(频率交叉表)
+
+
+# 添加合计行和合计列
+交叉表_带合计 = pd.crosstab(df['性别'], df['喜欢的颜色'], margins=True)
+
+# 输出结果
+print(交叉表_带合计)
+
+
+# 创建更多示例数据
+data = {
+    '性别': ['男', '女', '男', '女', '男', '女'],
+    '年龄组': ['青年', '中年', '青年', '中年', '老年', '青年'],
+    '喜欢的颜色': ['红', '蓝', '红', '红', '蓝', '蓝']
+}
+
+df = pd.DataFrame(data)
+
+# 使用多个因素计算交叉表
+复杂交叉表 = pd.crosstab([df['性别'], df['年龄组']], df['喜欢的颜色'])
+
+# 输出结果
+print(复杂交叉表)

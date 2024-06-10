@@ -1,15 +1,37 @@
 import numpy as np
 
-score = np.random.randint(40, 100, [10, 5])
+# 当 np.where 只接收一个参数（条件）时，它返回满足该条件的元素的索引。
 
-# 判断前四名学生,前四门课程中，成绩中大于60的置为1，否则为0
-test_score = score[0:4, 0:4]
-print(test_score)
-print(np.where(test_score > 60, 1, 0))
+# 创建一个示例数组
+array = np.array([10, 15, 20, 25, 30])
 
-# 复合逻辑需要结合np.logical_and和np.logical_or使用
+# 找到数组中所有可以被5整除的元素的位置
+positions = np.where(array % 5 == 0)
 
-# 判断前四名学生,前四门课程中，成绩中大于60且小于90的换为1，否则为0
-print(np.where(np.logical_and(test_score > 60, test_score < 90), 1, 0))
-# 判断前四名学生,前四门课程中，成绩中大于90或小于60的换为1，否则为0
-print(np.where(np.logical_or(test_score > 90, test_score < 60), 1, 0))
+# 输出结果
+print("可以被5整除的元素的位置是: ", positions)
+
+# 创建一个二维示例数组
+array = np.array([
+    [10, 22, 35],
+    [45, 50, 61],
+    [75, 80, 95]
+])
+
+# 找到二维数组中所有可以被5整除的元素的位置
+positions = np.where(array % 5 == 0)
+
+# 输出结果
+print("可以被5整除的元素的位置是：", positions)
+
+# 当 np.where 接收三个参数时，分别是条件、满足条件时的返回值、不满足条件时的返回值。
+
+# 创建一个示例数组
+array = np.array([10, 15, 20, 25, 30])
+
+# 根据条件选择元素：如果元素可以被5整除，则返回原值，否则返回-1
+result = np.where(array % 5 == 0, array, -1)
+
+# 输出结果
+print("根据条件选择的元素是：", result)
+

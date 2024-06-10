@@ -8,3 +8,4 @@ data = pd.read_csv('Pandas\data\stock_day.csv')
 # 定义一个对列，最大值-最小值的函数
 
 print(data[['open', 'close']].apply(lambda x: x.max() - x.min(), axis=0))
+print(data[['open', 'close']].max())
