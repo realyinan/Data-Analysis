@@ -30,7 +30,7 @@ print("可以被5整除的元素的位置是：", positions)
 array = np.array([10, 15, 20, 25, 30])
 
 # 根据条件选择元素：如果元素可以被5整除，则返回原值，否则返回-1
-result = np.where(array % 5 == 0, array, -1)
+result = np.where(array >= 20, array, -1)
 
 # 输出结果
 print("根据条件选择的元素是：", result)

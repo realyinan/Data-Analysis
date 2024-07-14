@@ -23,5 +23,5 @@ print(b)
 # 创建等比数列
 # 参数:
 # num:要生成的等比数列数量，默认为5
-c = np.logspace(0, 2, 3)
+c = np.logspace(0, 2, 5)
 print(c)
